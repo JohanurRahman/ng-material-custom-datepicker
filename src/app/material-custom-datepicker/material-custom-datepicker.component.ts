@@ -22,22 +22,22 @@ export class MaterialCustomDatepickerComponent implements OnInit {
 
   formData: FormGroup;
 
-  initialDate;
-  formattedDate1;
-  formattedDate2;
+  initialDate = new Date();
+  formattedDate1 = _moment(this.initialDate).format('YYYY-MM-DD');
+  formattedDate2 = _moment(this.initialDate).format('DD-MMM-YYYY');
 
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
-      this.formData = this._formBuilder.group({
-        date: ['']
-      })
-   }
+    this.formData = this._formBuilder.group({
+      date: [new Date]
+    });
+  }
 
-   onChange(event){
-     this.initialDate = event.value;
-     this.formattedDate1 = _moment(event.value).format('YYYY-MM-DD');
-     this.formattedDate2 = _moment(event.value).format('DD-MMM-YYYY');
-   }
+  onChange(event) {
+    this.initialDate = event.value;
+    this.formattedDate1 = _moment(event.value).format('YYYY-MM-DD');
+    this.formattedDate2 = _moment(event.value).format('DD-MMM-YYYY');
+  }
 
 }

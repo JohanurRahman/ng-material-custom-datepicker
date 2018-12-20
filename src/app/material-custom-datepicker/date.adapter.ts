@@ -1,18 +1,18 @@
-import { NativeDateAdapter} from "@angular/material";
+import { NativeDateAdapter } from '@angular/material';
 
 
 export class AppDateAdapter extends NativeDateAdapter {
 
   format(date: Date, displayFormat: string): string {
-    if (displayFormat == "input") {
-      let day = date.getDate();
-      let month = date.getMonth() + 1;
-      let year = date.getFullYear();
-      return this._to2digit(day) + '/' + this._to2digit(month) + '/' + year;
-    }
-    else if (displayFormat == "inputMonth") {
-      let month = date.getMonth();
-      let year = date.getFullYear();
+    if (displayFormat === 'input') {
+      const day = date.getDate();
+      const month = date.getMonth();
+      // const month = date.getMonth() + 1; /* When showing numeric add + 1*/
+      const year = date.getFullYear();
+      return this._to2digit(day) + '-' + this._toString(month) + '-' + year;
+    } else if (displayFormat === 'inputMonth') {
+      const month = date.getMonth();
+      const year = date.getFullYear();
       return this._toString(month) + ' ' + year;
     }
   }
@@ -21,15 +21,16 @@ export class AppDateAdapter extends NativeDateAdapter {
     return ('00' + n).slice(-2);
   }
 
-  private _toString(n: number) {
-    let month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  private _toString(n) {
+    const month = ['Jan', 'Feb', 'Mar',
+      'Apr', 'May', 'Jun', 'Jul',
+      'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return month[n];
   }
 
 }
 
-export const APP_DATE_FORMATS =
-{
+export const APP_DATE_FORMATS = {
   parse: {
     dateInput: 'LL'
   },
