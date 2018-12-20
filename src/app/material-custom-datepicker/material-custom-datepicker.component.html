@@ -1,7 +1,8 @@
 <form [formGroup]="formData">
 
   <mat-form-field>
-    <input matInput [matDatepicker]="picker"   placeholder="Choose a date" formControlName="date" (dateChange)="onChange($event)">
+    <input matInput [matDatepicker]="picker"   placeholder="Choose a date" formControlName="date" 
+    (dateChange)="onChange($event)" readonly>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>

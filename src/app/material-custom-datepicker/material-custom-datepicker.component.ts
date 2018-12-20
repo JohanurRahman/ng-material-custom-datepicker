@@ -18,8 +18,7 @@ import * as _moment from 'moment';
   ]
 })
 export class MaterialCustomDatepickerComponent implements OnInit {
-
-
+  
   formData: FormGroup;
 
   initialDate = new Date();
